@@ -1,6 +1,34 @@
 <?php
 // показывать или нет выполненные задачи
 $show_complete_tasks = rand(0, 1);
+
+$projects = ["Входящие", "Учеба", "Работа", "Домашние дела", "Авто"];
+
+$tasks = [ 0 => [ "Task" => "Собеседование в IT компании", 
+				"Date" => "01.12.2018", 
+				"Category" => "Работа", 
+				"Done" => "false"],
+		   1 => [ "Task" => "Выполнить тестовое задание",
+				"Date" => "25.12.2018", 
+				"Category" => "Работа", 
+				"Done" => "false"],
+           2 => [ "Task" => "Сделать задание первого раздела", 
+				"Date" => "21.12.2018", 
+				"Category" => "Учеба", 
+				"Done" => "true"],
+           3 => [ "Task" => "Встреча с другом", 
+				"Date" => "22.12.2018",
+				"Category" => "Входящие",
+				"Done" => "false"],
+           4 => [ "Task" => "Купить корм для кота",
+				"Date" => " ", 
+				"Category" => "	Домашние дела", 
+				"Done" => "false"],
+           5 => [ "Task" =>  "Заказать пиццу", 
+				"Date" => " ", 
+				"Category" => "Домашние дела",
+				"Done" => "false"],
+];
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -46,10 +74,13 @@ $show_complete_tasks = rand(0, 1);
 
                 <nav class="main-navigation">
                     <ul class="main-navigation__list">
-                        <li class="main-navigation__list-item">
-                            <a class="main-navigation__list-item-link" href="#">Название проекта</a>
+						<?php foreach ($projects as $elem):?>
+						
+							<li class="main-navigation__list-item">
+                            <a class="main-navigation__list-item-link" href="#"><?php echo $elem;?></a>
                             <span class="main-navigation__list-item-count">0</span>
                         </li>
+						<?php endforeach;?>
                     </ul>
                 </nav>
 
@@ -83,36 +114,28 @@ $show_complete_tasks = rand(0, 1);
                 </div>
 
                 <table class="tasks">
+				    
+							<?php foreach ($tasks as $key => $val):?>
+							<?php if ($show_complete_tasks == 1 || ($show_complete_tasks == 0 && $val["Done"] == "false")):?>
+
+							<tr class="tasks__item task <?=$val["Done"] == "true" ? "task--completed": ""?>">
+								<td class="task__select">
+									<label class="checkbox task__checkbox">
+										<input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1" <?=$val["Done"] == "true" ? "checked": ""?>>
+										<span class="checkbox__text"><?= $val["Task"];?></span>
+									</label>
+								</td>
+
+								<!--<td class="task__file">
+									<a class="download-link" href="#"></a>
+								</td>-->
+
+								<td class="task__date"><?= $val["Date"];?></td>
+								<td class="task__date"><?= $val["Category"];?></td>
+							</tr>
+							 <?php endif;?>
+							<?php endforeach;?>
 					
-                    <tr class="tasks__item task">
-                        <td class="task__select">
-                            <label class="checkbox task__checkbox">
-                                <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1" >
-                                <span class="checkbox__text">Сделать главную страницу Дела в порядке</span>
-                            </label>
-                        </td>
-
-                        <td class="task__file">
-                            <a class="download-link" href="#">Home.psd</a>
-                        </td>
-
-                        <td class="task__date"></td>
-                    </tr>
-                    <!--показывать следующий тег <tr/>, если переменная $show_complete_tasks равна единице-->
-					<?php if($show_complete_tasks == 1):?>
-					<tr class="tasks__item task task--completed">
-						<td class="task__select">
-							<label class="checkbox task__checkbox">
-								   <input class="checkbox__input visually-hidden" type="checkbox" checked>
-								   <span class="checkbox__text">Записаться на интенсив "Базовый PHP"</span>
-							</label>
-						</td>
-						<td class="task__date">10.10.2018</td>
-
-						<td class="task__controls">
-						</td>
-					</tr>
-					<?php endif;?>
                 </table>
             </main>
         </div>
