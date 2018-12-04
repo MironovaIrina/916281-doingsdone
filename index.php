@@ -22,13 +22,25 @@ $tasks = [ 0 => [ "Task" => "Собеседование в IT компании",
 				"Done" => "false"],
            4 => [ "Task" => "Купить корм для кота",
 				"Date" => " ", 
-				"Category" => "	Домашние дела", 
+				"Category" => "Домашние дела", 
 				"Done" => "false"],
            5 => [ "Task" =>  "Заказать пиццу", 
 				"Date" => " ", 
 				"Category" => "Домашние дела",
 				"Done" => "false"],
 ];
+
+function counting($tasks, $elem){
+	$count=0;
+	foreach($tasks as $key => $val){
+		if ($elem == $val["Category"]){
+			$count++;
+		}
+	}
+	return $count;
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -74,13 +86,12 @@ $tasks = [ 0 => [ "Task" => "Собеседование в IT компании",
 
                 <nav class="main-navigation">
                     <ul class="main-navigation__list">
-						<?php foreach ($projects as $elem):?>
-						
+					<?php foreach ($projects as $elem):?>
 							<li class="main-navigation__list-item">
                             <a class="main-navigation__list-item-link" href="#"><?php echo $elem;?></a>
-                            <span class="main-navigation__list-item-count">0</span>
-                        </li>
-						<?php endforeach;?>
+                            <span class="main-navigation__list-item-count"><?php echo counting($tasks, $elem);?></span>
+							</li>
+					<?php endforeach;?>
                     </ul>
                 </nav>
 
