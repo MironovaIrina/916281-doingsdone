@@ -21,18 +21,6 @@
                         <span class="checkbox__text">Показывать выполненные</span>
                     </label>
                 </div>
-                <table class="tasks">
-				
-							<?php foreach ($tasks as $key => $val):?>
-							<?php if ($show_complete_tasks == 1 || ($show_complete_tasks == 0 && $val["Done"] == "false")):?>
-
-							<tr class="tasks__item task <?=$val["Done"] == "true" ? "task--completed": ""?> <?= dte ($val["Date"]) <= 24 && dte ($val["Date"]) != "" ? "task--important": ""?>"> 
-                <table class="tasks">
-				    
-							<?php foreach ($tasks as $key => $val):?>
-							<?php if ($show_complete_tasks == 1 || ($show_complete_tasks == 0 && $val["Done"] == "false")):?>
-
-							<tr class="tasks__item task <?=$val["Done"] == "true" ? "task--completed": ""?>">
 								<td class="task__select">
 									<label class="checkbox task__checkbox">
 										<input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1" <?=$val["Done"] == "true" ? "checked": ""?>>
