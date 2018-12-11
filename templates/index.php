@@ -21,7 +21,6 @@
                         <span class="checkbox__text">Показывать выполненные</span>
                     </label>
                 </div>
-				 
 								<td class="task__select">
 									<label class="checkbox task__checkbox">
 										<input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1" <?=$val["Done"] == "true" ? "checked": ""?>>
