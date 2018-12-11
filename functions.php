@@ -26,5 +26,18 @@ function counting($tasks, $elem){
 	}
 	return $count;
 }
-
+/* переводим в формат timestamp, вычисляем разницу, получаем часы*/
+function dte($data){
+	$ny_date = strtotime($data);
+	
+	if($ny_date == ""){
+	return "";
+	
+	}
+	
+	$curdate = time();
+	$Dte = floor($ny_date - $curdate)/3600;
+	
+	return $Dte;
+}
 ?>
