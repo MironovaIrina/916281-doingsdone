@@ -36,7 +36,7 @@ function dte($data){
 	}
 	
 	$curdate = time();
-	$Dte = floor($ny_date - $curdate)/3600;
+	$Dte = floor(($ny_date - $curdate)/3600);
 	
 	return $Dte;
 }

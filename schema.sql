@@ -8,7 +8,6 @@ CREATE TABLE users (
  id INT AUTO_INCREMENT PRIMARY KEY,
  name_user CHAR(128) NOT NULL UNIQUE,
  email CHAR(128) NOT NULL UNIQUE,
- password CHAR(128) NOT NULL,
  date_registration TIMESTAMP DEFAULT CURRENT_TIMESTAMP
  );
  
@@ -25,7 +24,6 @@ CREATE TABLE projects (
   date_execution TIMESTAMP,
   status BOOLEAN DEFAULT 0,
   name_task CHAR(128) NOT NULL,
-  referens_file CHAR(128),
   deadline TIMESTAMP,
   id_project INT(10),
   id_user INT(10),
