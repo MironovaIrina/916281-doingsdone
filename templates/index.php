@@ -26,17 +26,16 @@
                 <table class="tasks">
 				
 							<?php foreach ($tasks as $key => $val):?>
-							<?php if ($show_complete_tasks == 1 || ($show_complete_tasks == 0 && $val["Done"] == "false")):?>
+							<?php if ($show_complete_tasks == 1 || ($show_complete_tasks == 0 && $val["status"] == "false")):?>
 
-							<tr class="tasks__item task <?=$val["Done"] == "true" ? "task--completed": ""?>"> 
+							<tr class="tasks__item task <?=$val["status"] == 1 ? "task--completed": ""?> <?= dte ($val["deadline"]) <= 24 && dte ($val["deadline"]) != "" ? "task--important": ""?>"> 
 								<td class="task__select">
 									<label class="checkbox task__checkbox">
-										<input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1" <?=$val["Done"] == "true" ? "checked": ""?>>
-										<span class="checkbox__text"><?= $val["Task"];?></span>
+										<input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1" <?=$val["status"] == 1 ? "checked": ""?>>
+										<span class="checkbox__text"><?= $val["name_task"];?></span>
 									</label>
 								</td>							
-								<td class="task__date"><?= $val["Date"];?></td>
-								<td class="task__date"><?= $val["Category"];?></td>
+								<td class="task__date"><?= $val["deadline"];?></td>
 							</tr>
 							 <?php endif;?>
 							<?php endforeach;?>
