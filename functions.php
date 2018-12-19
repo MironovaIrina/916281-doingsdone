@@ -52,15 +52,7 @@ function project($con, $id_user){
 
 /* Функция для получения списка из всех задач у текущего пользователя */	
 function task($con, $id_user, $id_project){
-	if (!$id_project){
-		$sql = "SELECT *, DATE_FORMAT(deadline, '%Y-%m-%d') AS deadline FROM tasks WHERE id_user = ? ORDER BY date_create DESC";
-		$stmt = mysqli_prepare($con, $sql);
-		mysqli_stmt_bind_param($stmt, 'i', $id_user);
-	}
-	else{
-		$sql = "SELECT *, DATE_FORMAT(deadline, '%Y-%m-%d') AS deadline FROM tasks WHERE id_user = ? AND id_project = ? ORDER BY date_create DESC";
-		$stmt = mysqli_prepare($con, $sql);
-		mysqli_stmt_bind_param($stmt, 'ii', $id_user, $id_project);
+
 	}
 	    mysqli_stmt_execute($stmt);
 	    $res = mysqli_stmt_get_result($stmt);
@@ -88,5 +80,6 @@ function counting($con, $id_user, $id_project){
 	    $count = mysqli_num_rows($result);
 		return $count;
 }
+
 
 ?>

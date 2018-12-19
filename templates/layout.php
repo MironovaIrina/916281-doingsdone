@@ -43,7 +43,7 @@
                 <nav class="main-navigation">
                     <ul class="main-navigation__list">
 					<?php foreach ($projects as $key => $elem):?> <!--проходим по массиву-->
-							<li class="main-navigation__list-item <?= $elem["id"] == $id_project ? "main-navigation__list-item--active" : ""?>">
+
                             <a class="main-navigation__list-item-link" href="index.php?elem_id=<?=$elem["id"];?>"><?= $elem["name_project"];?></a> <!--показываем каждый элемент ввиде ссылки--> 
                             <span class="main-navigation__list-item-count"><?php echo counting($con, $id_user, $elem["id"]);?></span>
 							</li>
